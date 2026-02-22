@@ -19,7 +19,6 @@ const registerUser = async (req, res) => {
 
     if (!firstName || !lastName || !email || !password) { return res.status(400).json({ message: "All fields are required" }); }
     
-    
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
 
