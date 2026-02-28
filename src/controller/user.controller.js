@@ -6,7 +6,9 @@ const jwt = require("jsonwebtoken");
 
 async function createToken(user){
       const token = jwt.sign(
-            {userId: user._id, email: user.email},
+            {userId: user._id, email: user.email, role: user.role
+                
+            },
             process.env.JWT_SECRET,
             { expiresIn: process.env.JWT_EXPIRES_IN }
         ) 
@@ -32,11 +34,11 @@ const registerUser = async (req, res) => {
     // generate a token for them to log them in   
         const token = await createToken(newUser)
 
-    res.status(201).json({ message: "User registered successfully", user: newUser, token });
+    return res.status(201).json({ message: "User registered successfully", user: newUser, token });
 
    }catch(error){
     console.log(error.message)
-    res.status(500).json({ message: "Internal server error", error });
+    return res.status(500).json({ message: "Internal server error", error });
    }
 }
 
@@ -45,7 +47,7 @@ async function loginUser(req, res) {
         const { email, password } = req.body;
         // find if the user is in out daatabase
         const user = await User.findOne({ email });    
-        
+
         // if there is no user with the email provided, return an error
         if(!user){
             return res.status(404).json({ message: "User not found" });

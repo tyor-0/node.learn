@@ -6,6 +6,7 @@ const route= Router();
 
 route.get('/', getAllProducts)
 route.get('/user', verifyToken, getAllUserProducts)
+
 route.post('/', verifyToken, createProduct)
 route.get('/:id', getSingleProduct)
 route.patch('/:id', verifyToken, updateProduct)

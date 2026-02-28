@@ -8,6 +8,7 @@ const blogRoutes = require('./src/routes/blog.route');
 const carRoutes = require('./src/routes/car.route');
 const userRoutes = require('./src/routes/user.route');
 const productRoutes = require('./src/routes/product.route');
+const adminRoutes = require('./src/routes/admin.route');
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,8 @@ app.use('/api/v1/cars', carRoutes);
 app.use('/api/v1/auth', userRoutes)
 
 app.use('/api/v1/products', productRoutes)
+
+app.use('/api/v1/admin', adminRoutes)
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Product API');

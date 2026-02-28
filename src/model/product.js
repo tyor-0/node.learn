@@ -23,16 +23,7 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, "Product image URL is required"]
     },
-    rating: {
-      rate: {
-        type: Number,
-        required: [true, "Product rating is required"]
-      },
-      count: {
-        type: Number,
-        required: [true, "Product rating count is required"]
-      }
-    },
+   
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -41,7 +32,7 @@ const productSchema = new mongoose.Schema(
   },
   {
     timestamps: true
-  }
+  } 
 );
 
 module.exports = mongoose.model("Product", productSchema);

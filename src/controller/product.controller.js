@@ -38,7 +38,7 @@ async function createProduct(req, res) {
             description,
             category,
             image,
-            rating,
+            
             user: userId
         });
 
